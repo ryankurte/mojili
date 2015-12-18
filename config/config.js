@@ -4,7 +4,8 @@ config = {
   "development": {
     database: "sqlite://dev.db",
     options: {
-        logging: false
+        logging: false,
+        sync: true
     },
   },
   "test": {
