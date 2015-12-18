@@ -1,7 +1,7 @@
 var env = process.env.NODE_ENV || "development";
 
 config = {
-  "development": {
+  development: {
     url: "localhost",
     database: "sqlite://dev.db",
     options: {
@@ -9,13 +9,21 @@ config = {
         sync: true
     },
   },
-  "test": {
+  test: {
     url: "localhost",
     database: "sqlite://test.db",
+    options: {
+        logging: false,
+        sync: true
+    },
   },
-  "production": {
+  production: {
     url: process.env.URL,
-    database: process.env.DATABASE_URL
+    database: process.env.DATABASE_URL,
+    options: {
+        logging: false,
+        sync: true
+    },
   }
 }
 
