@@ -14,7 +14,8 @@
         return $('#url').val().toLowerCase().trim();
     }
 
-    submitURL = function submitURL() {
+    $("#mojiliForm").submit(function submitURL(e) {
+        e.preventDefault();
         var url = getURL();
 
         $('#result').toggleClass('hidden', true);
@@ -35,7 +36,7 @@
                 $('#result').append('<p>' + data.message + '</p>');
             }
         });
-    }
+    });
 
     onURLChange = function onURLChange() {
         var url = getURL();
