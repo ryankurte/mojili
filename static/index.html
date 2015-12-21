@@ -1,77 +1,51 @@
+<!DOCTYPE html>
+
 <html>
-<head>
+	<head>
+		<title>Moji.li</title>
 
-<title>Moji.li</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CDN plz no -->
+        <link href="http://cdn.staticfile.org/emoji/0.2.2/emoji.css" rel="stylesheet" type="text/css" />
+
+        <link href="content/lib/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="content/mojili.css">
 
 
-<link href="../../css/bootstrap.min.css" rel="stylesheet">
-<link href="http://cdn.staticfile.org/emoji/0.2.2/emoji.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/lib/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://cdn.staticfile.org/emoji/0.2.2/emoji.js"></script>
 
-<style>
-.vertical-center {
-  min-height: 20%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 20vh; /* These two lines are counted as one :-)       */
+        <script type="text/javascript" src="js/polyfill.js" ></script>
+	</head>
 
-  display: flex;
-  align-items: center;
-}
-</style>
+	<body>
+		<div class="container">
+			<h1 id="titleHeader">Moji.li <small>URL Shortner</small></h1>
+            <br>
 
-</head>
-
-<body>
-	<div class="container-fluid">
-		<div class="row" style="height: 100px; "></div>
-
-		<div class="row">
-			<div class="col-sm-2 col-md-4 col-lg-4"></div>
-			<div class="well vertical-center col-sm-8 col-md-4 col-lg-4">
-				<input id='url' type="text" class="form-control" placeholder="Enter URL to shorten">
-				<button class='btn btn-default' id='submit' onclick='submit()'>Shorten</button>
+			<div class="row">
+				<div class="well vertical-center">
+                    <form action="#" onsubmit="submitURL()">
+                        <div class="form-group">
+                            <small style="color: red" id="errorMessage" class="hidden">Please enter a valid URL (Did you include 'http://'?)</small>
+                            <div class="input-group">
+                                <input id='url' type="text" class="form-control" onkeyup="onURLChange()" placeholder="Enter URL to shorten">
+                                <span class="input-group-btn">
+                                    <button class='btn btn-primary' id="submitButton" type="submit" disabled>Shorten</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+				</div>
 			</div>
-			<div class="col-sm-2 col-md-4 col-lg-4"></div>
+
+            <div class="alert hidden" id="result" role="alert">
+            </div>
 		</div>
 
-		<div class="row">
-			<div class="col-md-4"></div>
-			<div id='result' class="col-md-4">
-			</div>
-			<div class="col-md-4"></div>
-		</div>
-
-	</div>
-</body>
-
-
-<script src="/js/jquery-1.11.3.min.js"></script>
-
-<script>
-
-$(document).ready(function(){
-    $('#url').keypress(function(e){
-      if(e.keyCode==13)
-      $('#submit').click();
-    });
-});
-
-function submit() {
-	var url = $('#url').val();
-
-	jQuery.post('/', {url: url}, function(data) {
-		if(data.result == 'okay') {
-			$('#result').empty();
-			$('#result').append('<div class="alert alert-success" role="alert">' + '<p>Your link: <a href=' + data.emoji_url + '>' + data.emoji_url + '</a></p>'+ '</div>');
-		} else {
-			$('#result').empty();
-			$('#result').append('<div class="alert alert-warning" role="alert">' + data.message + '</div>');
-		}
-	});
-}
-
-</script>
-
-<script src="/js/bootstrap.min.js"></script>
-<script src="https://cdn.staticfile.org/emoji/0.2.2/emoji.js"></script>
-
+        <script type="text/javascript" src="js/mojili.js"></script>
+    </body>
 </html>
 
