@@ -21,29 +21,37 @@
 	</head>
 
 	<body>
-		<div class="container">
-			<h1 id="titleHeader">Moji.li <small>URL Shortner</small></h1>
-            <br>
+        <div id="wrap">
+            <div class="container">
+                <h1 id="titleHeader">Moji.li <small>URL Shortner</small></h1>
+                <br>
 
-			<div class="row">
-				<div class="well vertical-center">
-                    <form id="mojiliForm">
-                        <div class="form-group">
-                            <small style="color: red" id="errorMessage" class="hidden">Please enter a valid URL (Did you include 'http://'?)</small>
-                            <div class="input-group">
-                                <input id='url' type="text" class="form-control" onkeyup="onURLChange()" placeholder="Enter URL to shorten">
-                                <span class="input-group-btn">
-                                    <button class='btn btn-primary' id="submitButton" type="submit" disabled>Shorten</button>
-                                </span>
+                <div class="row">
+                    <div class="well vertical-center">
+                        <form id="mojiliForm">
+                            <div class="form-group">
+                                <small style="color: red" id="errorMessage" class="hidden">Please enter a valid URL (Did you include 'http://'?)</small>
+                                <div class="input-group">
+                                    <input id='url' type="text" class="form-control" onkeyup="onURLChange()" placeholder="Enter URL to shorten">
+                                    <span class="input-group-btn">
+                                        <button class='btn btn-primary' id="submitButton" type="submit" disabled>Shorten</button>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-				</div>
-			</div>
+                        </form>
+                    </div>
+                </div>
 
-            <div class="alert hidden" id="result" role="alert">
+                <div class="alert hidden" id="result" role="alert">
+                </div>
             </div>
-		</div>
+        </div>
+
+        <div id="footer">
+            <div class="container">
+                <p class="text-muted">By <a href="https://twitter.com/ryankurte">@ryankurte</a>, <a href="https://twitter.com/peabnuts123">@peabnuts123</a></p>
+            </div>
+        </div>
 
         <script type="text/javascript" src="js/mojili.js"></script>
     </body>
