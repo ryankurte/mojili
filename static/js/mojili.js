@@ -9,9 +9,18 @@
         });
     });
 
+    var URLProtocolRegEx = new RegExp("^(\\w+:\\/\\/)");
+
+    function URLProtocolToLowerCase(url) {
+        if (URLProtocolRegEx.test(url)) {
+            return url.replace(URLProtocolRegEx, (URLProtocolRegEx.exec(url)[0]).toLowerCase());
+        } else {
+            return url;
+        }
+    }
 
     function getURL() {
-        return $('#url').val().toLowerCase().trim();
+        return URLProtocolToLowerCase($('#url').val()).trim();
     }
 
     $("#mojiliForm").submit(function submitURL(e) {
