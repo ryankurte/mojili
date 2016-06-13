@@ -4,6 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
+    "postinstall": "bower install && gulp default",
     "start": "node lib/index.js",
     "test": "mocha"
   },
