@@ -2,3 +2,6 @@
 node_modules
 *.log
 .idea
+bower_components
+static/scripts/lib/*
+static/content/lib/*

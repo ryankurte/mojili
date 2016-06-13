@@ -3,21 +3,20 @@
 <html>
 	<head>
 		<title>Moji.li</title>
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- CDN plz no -->
-        <link href="content/emoji.css" rel="stylesheet" type="text/css" />
-
-        <link href="content/lib/bootstrap.min.css" rel="stylesheet">
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="content/lib/emojijs-bundle.min.css"/>
+        <link rel="stylesheet" type="text/css" href="content/lib/bootstrap-bundle.min.css"/>
         <link rel="stylesheet" type="text/css" href="content/mojili.css">
 
+        <!-- SCRIPTS -->
+        <script type="text/javascript" src="scripts/lib/jquery-bundle.min.js"></script>
+        <script type="text/javascript" src="scripts/lib/bootstrap-bundle.min.js"></script>
+        <script type="text/javascript" src="scripts/lib/emojijs-bundle.min.js"></script>-
 
-        <script type="text/javascript" src="js/lib/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
-
-        <script type="text/javascript" src="js/polyfill.js" ></script>
-        <script type="text/javascript" src="js/gtrack.js" ></script>
+        <script type="text/javascript" src="scripts/polyfill.js" ></script>
+        <script type="text/javascript" src="scripts/gtrack.js" ></script>
 	</head>
 
 	<body>
@@ -42,7 +41,7 @@
                     </div>
                 </div>
 
-                <div class="alert hidden" id="result" role="alert">
+                <div class="alert hidden clearfix" id="result" role="alert">
                 </div>
             </div>
         </div>
@@ -53,7 +52,7 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="js/mojili.js"></script>
+        <script type="text/javascript" src="scripts/mojili.js"></script>
     </body>
 </html>
 

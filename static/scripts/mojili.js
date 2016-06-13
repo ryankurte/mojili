@@ -3,7 +3,8 @@
         setTimeout(function getAndSetRandomEmoji() {
             var randomEmoji = $.get('/emoji', function (data) {
                 if (data.result === 'okay') {
-                    $("#titleHeader").prepend(data.emoji + " ");
+                    var $titleHeader = $("#titleHeader");
+                    $titleHeader.prepend(emoji.parseEmoji(data.emoji) + " ");
                 }
             });
         });
@@ -27,22 +28,23 @@
         e.preventDefault();
         var url = getURL();
 
-        $('#result').toggleClass('hidden', true);
+        var $result = $("#result");
+        $result.toggleClass('hidden', true);
 
         $.post('/', {url: url}, function (data) {
-            $('#result').toggleClass('hidden', false);
+            $result.toggleClass('hidden', false);
 
             if (data.result == 'okay') {
-                $('#result').empty();
-                $('#result').toggleClass('alert-success', true);
-                $('#result').toggleClass('alert-danger', false);
-
-                $('#result').append('<p><strong>Your Link:</strong> <a href="/' + data.emoji_url + '">moji.li/' + data.emoji_url + '</a></p>');
+                $result.empty();
+                $result.toggleClass('alert-success', true);
+                $result.toggleClass('alert-danger', false);
+                
+                $result.append('<p><strong>Your Link:</strong> <a href="/' + data.emoji_url + '">moji.li/' + emoji.parseEmoji(data.emoji_url) + '</a></p>');
             } else {
-                $('#result').empty();
-                $('#result').toggleClass('alert-success', false);
-                $('#result').toggleClass('alert-danger', true);
-                $('#result').append('<p>' + data.message + '</p>');
+                $result.empty();
+                $result.toggleClass('alert-success', false);
+                $result.toggleClass('alert-danger', true);
+                $result.append('<p>' + data.message + '</p>');
             }
         });
     });
