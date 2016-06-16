@@ -4,7 +4,7 @@ var concat = require('gulp-concat');
 var cleanCSS = require('gulp-clean-css');
 var modernizr = require('modernizr');
 var fs = require('fs');
-
+var path = require('path');
 
 // CONFIG
 var config = {
@@ -161,7 +161,7 @@ gulp.task('modernizr', [], function modernizrFunction() {
     //generate modernizr file
     modernizr.build(config.input.modernizr.config, function(resultJS) {
         //writer modernizr bundle to file
-        fs.writeFileSync(config.output.scriptsFolder + '/' + config.output.modernizr, resultJS);
+        fs.writeFileSync(path.join(__dirname, config.output.scriptsFolder, config.output.modernizr), resultJS);
     });
 })
 
