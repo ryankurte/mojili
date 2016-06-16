@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var minify = require('gulp-minify');
 var concat = require('gulp-concat');
 var cleanCSS = require('gulp-clean-css');
+var modernizr = require('modernizr');
+var fs = require('fs');
 
 
 // CONFIG
@@ -28,6 +30,19 @@ var config = {
             css: [
                 'bower_components/emojijs/emoji.css'
             ]
+        },
+        modernizr: {
+            config: {
+                "minify": true,
+                "options": [
+                    "addTest",
+                    "setClasses"
+                ],
+                "feature-detects": [
+                    "test/canvastext",
+                    "test/emoji"
+                ]
+            }
         }
     },
     output: {
@@ -42,7 +57,8 @@ var config = {
         emoji: {
             js: 'emojijs-bundle.min.js',
             css: 'emojijs-bundle.min.css'
-        }
+        },
+        modernizr: 'modernizr-bundle.min.js'
     }
 }
 
@@ -86,6 +102,7 @@ function cssMinifyAndBundle(options) {
         destinationFolder: config.output.contentFolder
     });
 }
+
 
 // BOOTSTRAP
 gulp.task('bootstrap-js', [], function bootstrapJS() {
@@ -139,8 +156,17 @@ gulp.task('emoji', ['emoji-js', 'emoji-css'], function emoji() {
 });
 
 
+// MODERNIZR 
+gulp.task('modernizr', [], function modernizrFunction() {
+    //generate modernizr file
+    modernizr.build(config.input.modernizr.config, function(resultJS) {
+        //writer modernizr bundle to file
+        fs.writeFileSync(config.output.scriptsFolder + '/' + config.output.modernizr, resultJS);
+    });
+})
+
 // GENERAL
-gulp.task('scripts', ['bootstrap-js', 'jquery', 'emoji-js'], function scripts() {
+gulp.task('scripts', ['bootstrap-js', 'jquery', 'emoji-js', 'modernizr'], function scripts() {
 });
 
 gulp.task('content', ['bootstrap-css', 'bootstrap-fonts', 'emoji-css'], function content() {
