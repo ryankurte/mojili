@@ -1,15 +1,34 @@
 (function mojili() {
+    // On Load
     $(function onReady() {
         setTimeout(function getAndSetRandomEmoji() {
             var randomEmoji = $.get('/emoji', function (data) {
                 if (data.result === 'okay') {
                     var $titleHeader = $("#titleHeader");
-                    $titleHeader.prepend(emoji.parseEmoji(data.emoji) + " ");
+                    var emojiChar = data.emoji;
+                    if (!Modernizr.emoji_old) {
+                        emojiChar = emoji.parseEmoji(data.emoji);
+                    }
+                    $titleHeader.prepend(emojiChar + " ");
                 }
             });
         });
     });
-
+    
+    // Polyfill 
+    Modernizr.addTest('emoji_old', function() {
+        if (!Modernizr.canvastext) {
+            return false;
+        }
+        var node = document.createElement('canvas'); 
+        var ctx = node.getContext('2d');
+        ctx.textBaseline = 'top';
+        ctx.font = '32px Arial';
+        ctx.fillText('\ud83d\ude03', 0, 0); // "smiling face with open mouth" emoji
+        return ctx.getImageData(16, 16, 1, 1).data[0] !== 0;
+    });
+    
+    // URL
     var URLProtocolRegEx = new RegExp("^(\\w+:\\/\\/)");
 
     function URLProtocolToLowerCase(url) {
@@ -24,6 +43,8 @@
         return URLProtocolToLowerCase($('#url').val()).trim();
     }
 
+
+    // Form logic
     $("#mojiliForm").submit(function submitURL(e) {
         e.preventDefault();
         var url = getURL();
@@ -39,7 +60,12 @@
                 $result.toggleClass('alert-success', true);
                 $result.toggleClass('alert-danger', false);
                 
-                $result.append('<p><strong>Your Link:</strong> <a href="/' + data.emoji_url + '">moji.li/' + emoji.parseEmoji(data.emoji_url) + '</a></p>');
+                var emojiUrl = data.emoji_url;
+                if (!Modernizr.emoji_old) {
+                    emojiUrl = emoji.parseEmoji(emojiUrl);
+                }
+                
+                $result.append('<p><strong>Your Link:</strong> <a href="/' + data.emoji_url + '">moji.li/' + emojiUrl + '</a></p>');
             } else {
                 $result.empty();
                 $result.toggleClass('alert-success', false);
