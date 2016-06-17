@@ -1,7 +1,7 @@
 # mojili
 
 A terrible URL shortener using emojis 🎂   
-Check it out at [http://moji.li] (http://moji.li) 👍   
+Check it out at [https://moji.li] (https://moji.li) 👍   
 Now open source, for all your on premise terrible url shortening! 🎉 🎉 🎉  
 
 ## Requirements
