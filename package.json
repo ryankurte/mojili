@@ -15,18 +15,18 @@
     "emoji": "^0.3.2",
     "emoji-regex": "^6.0.0",
     "express": "^4.13.3",
-    "pg": "^4.4.3",
+    "pg": "^6.1.0",
     "sequelize": "^3.15.0",
     "sqlite3": "^3.1.1",
-    "validator": "^4.4.0",
+    "validator": "^5.5.0",
     "winston": "^2.1.1",
     "bower": "^1.7.9",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.10",
     "gulp-concat": "^2.6.0",
-    "gulp-minify": "0.0.12",
+    "gulp-minify": "0.0.14",
     "modernizr": "^3.3.1",
-    "mocha": "^2.5.3",
-    "supertest": "^1.2.0"
+    "mocha": "^3.0.2",
+    "supertest": "^2.0.0"
   }
 }
