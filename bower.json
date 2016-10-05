@@ -23,6 +23,6 @@
   "dependencies": {
     "bootstrap": "^3.3.6",
     "jquery": "1.9.1 - 2",
-    "emoji-js": "^0.3.0"
+    "emojijs": "https://github.com/jloutsenhizer/emojijs.git"
   }
 }
