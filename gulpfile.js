@@ -138,21 +138,21 @@ gulp.task('jquery', [], function jquery() {
 
 
 // EMOJI
-gulp.task('emoji-js', [], function emojiJS() {
+gulp.task('emojijs-scripts', [], function emojiJS() {
     return jsMinifyAndBundle({
         src: config.input.emoji.js,
         destinationFilename: config.output.emoji.js
     });
 });
 
-gulp.task('emoji-css', [], function emojiCSS() {
+gulp.task('emojijs-content', [], function emojiCSS() {
     return cssMinifyAndBundle({
         src: config.input.emoji.css,
         destinationFilename: config.output.emoji.css
     });
 });
 
-gulp.task('emoji', ['emoji-js', 'emoji-css'], function emoji() {
+gulp.task('emoji', ['emojijs-scripts', 'emojijs-content'], function emoji() {
 });
 
 
@@ -166,10 +166,10 @@ gulp.task('modernizr', [], function modernizrFunction() {
 })
 
 // GENERAL
-gulp.task('scripts', ['bootstrap-js', 'jquery', 'emoji-js', 'modernizr'], function scripts() {
+gulp.task('scripts', ['bootstrap-js', 'jquery', 'emojijs-scripts', 'modernizr'], function scripts() {
 });
 
-gulp.task('content', ['bootstrap-css', 'bootstrap-fonts', 'emoji-css'], function content() {
+gulp.task('content', ['bootstrap-css', 'bootstrap-fonts', 'emojijs-content'], function content() {
 });
 
 gulp.task('default', ['content', 'scripts'], function gulpDefault() {
