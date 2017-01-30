@@ -27,6 +27,6 @@
     "gulp-minify": "0.0.14",
     "modernizr": "^3.3.1",
     "mocha": "^3.0.2",
-    "supertest": "^2.0.0"
+    "supertest": "^3.0.0"
   }
 }
